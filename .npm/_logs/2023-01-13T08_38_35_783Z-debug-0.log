@@ -1,0 +1,39 @@
+0 verbose cli /home/container/.nvm/versions/node/v16.9.0/bin/node /home/container/.nvm/versions/node/v16.9.0/lib/node_modules/npm/bin/npm-cli.js
+1 info using npm@9.3.0
+2 info using node@v16.9.0
+3 warn cli npm v9.3.0 does not support Node.js v16.9.0. You should probably upgrade to a
+3 warn cli newer version of node as we can't make any promises that npm will work with this
+3 warn cli version. This version of npm supports the following node versions: `^14.17.0 ||
+3 warn cli ^16.13.0 || >=18.0.0`. You can find the latest version at https://nodejs.org/.
+4 timing npm:load:whichnode Completed in 3ms
+5 timing config:load:defaults Completed in 4ms
+6 timing config:load:file:/home/container/.nvm/versions/node/v16.9.0/lib/node_modules/npm/npmrc Completed in 2ms
+7 timing config:load:builtin Completed in 2ms
+8 timing config:load:cli Completed in 8ms
+9 timing config:load:env Completed in 1ms
+10 timing config:load:project Completed in 1ms
+11 timing config:load:file:/home/container/.npmrc Completed in 0ms
+12 timing config:load:user Completed in 0ms
+13 timing config:load:file:/home/container/.nvm/versions/node/v16.9.0/etc/npmrc Completed in 0ms
+14 timing config:load:global Completed in 0ms
+15 timing config:load:setEnvs Completed in 1ms
+16 timing config:load Completed in 18ms
+17 timing npm:load:configload Completed in 19ms
+18 timing npm:load:mkdirpcache Completed in 0ms
+19 timing npm:load:mkdirplogs Completed in 0ms
+20 verbose title npm bin
+21 verbose argv "bin" "--global"
+22 timing npm:load:setTitle Completed in 2ms
+23 timing config:load:flatten Completed in 6ms
+24 timing npm:load:display Completed in 9ms
+25 verbose logfile logs-max:10 dir:/home/container/.npm/_logs/2023-01-13T08_38_35_783Z-
+26 verbose logfile /home/container/.npm/_logs/2023-01-13T08_38_35_783Z-debug-0.log
+27 timing npm:load:logFile Completed in 7ms
+28 timing npm:load:timers Completed in 1ms
+29 timing npm:load:configScope Completed in 0ms
+30 timing npm:load Completed in 42ms
+31 silly logfile start cleaning logs, removing 1 files
+32 silly logfile done cleaning log files
+33 verbose exit 0
+34 timing npm Completed in 65ms
+35 verbose code 1
