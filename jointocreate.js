@@ -40,36 +40,36 @@ module.exports = function (client) {
   let oldchanelid = "unknown"
   if (oldState && oldState.channel && oldState.channel.parent && oldState.channel.parent.name) oldparentname = oldState.channel.parent.name
   if (oldState && oldState.channel && oldState.channel.name) oldchannelname = oldState.channel.name
-  if (oldState && oldState.channelID) oldchanelid = oldState.channelID
+  if (oldState && oldState.channelId) oldchanelid = oldState.channelId
   let newparentname = "unknown"
   let newchannelname = "unknown"
   let newchanelid = "unknown"
   if (newState && newState.channel && newState.channel.parent && newState.channel.parent.name) newparentname = newState.channel.parent.name
   if (newState && newState.channel && newState.channel.name) newchannelname = newState.channel.name
-  if (newState && newState.channelID) newchanelid = newState.channelID
-  if (oldState.channelID) {
+  if (newState && newState.channelId) newchanelid = newState.channelId
+  if (oldState.channelId) {
       if (typeof oldState.channel.parent !== "undefined")  oldChannelName = `${oldparentname}\n\t**${oldchannelname}**\n*${oldchanelid}*`
        else  oldChannelName = `-\n\t**${oldparentname}**\n*${oldchanelid}*`
   }
-  if (newState.channelID) {
+  if (newState.channelId) {
       if (typeof newState.channel.parent !== "undefined") newChannelName = `${newparentname}\n\t**${newchannelname}**\n*${newchanelid}*`
       else newChannelName = `-\n\t**${newchannelname}**\n*${newchanelid}*`
   }
   // JOINED V12
-  if (!oldState.channelID && newState.channelID) {
-    if(newState.channelID !== config.JOINTOCREATECHANNEL) return;  //if its not the jointocreatechannel skip
+  if (!oldState.channelId && newState.channelId) {
+    if(newState.channelId !== config.JOINTOCREATECHANNEL) return;  //if its not the jointocreatechannel skip
     jointocreatechannel(newState);   //load the function
   }
   // LEFT V12
-  if (oldState.channelID && !newState.channelID) {
+  if (oldState.channelId && !newState.channelId) {
             //get the jointocreatechannel id from the map
-          if (jointocreatemap.get(`tempvoicechannel_${oldState.guild.id}_${oldState.channelID}`)) {
+          if (jointocreatemap.get(`tempvoicechannel_${oldState.guild.id}_${oldState.channelId}`)) {
             //fetch it from the guild
-            var vc = oldState.guild.channels.cache.get(jointocreatemap.get(`tempvoicechannel_${oldState.guild.id}_${oldState.channelID}`));
+            var vc = oldState.guild.channels.cache.get(jointocreatemap.get(`tempvoicechannel_${oldState.guild.id}_${oldState.channelId}`));
             //if the channel size is below one
             if (vc.members.size < 1) { 
               //delete it from the map
-              jointocreatemap.delete(`tempvoicechannel_${oldState.guild.id}_${oldState.channelID}`); 
+              jointocreatemap.delete(`tempvoicechannel_${oldState.guild.id}_${oldState.channelId}`); 
               //log that it is deleted
               console.log(" :: " + oldState.member.user.username + "#" + oldState.member.user.discriminator + " :: Channel vide -> Destruction")
               //delete the voice channel
@@ -80,21 +80,21 @@ module.exports = function (client) {
           }
   }
   // Switch v12
-  if (oldState.channelID && newState.channelID) {
+  if (oldState.channelId && newState.channelId) {
   
-    if (oldState.channelID !== newState.channelID) {
+    if (oldState.channelId !== newState.channelId) {
       //if its the join to create channel
-      if(newState.channelID===config.JOINTOCREATECHANNEL) 
+      if(newState.channelId===config.JOINTOCREATECHANNEL) 
       //make a new channel
       jointocreatechannel(oldState);  
       //BUT if its also a channel ín the map (temp voice channel)
-      if (jointocreatemap.get(`tempvoicechannel_${oldState.guild.id}_${oldState.channelID}`)) {
+      if (jointocreatemap.get(`tempvoicechannel_${oldState.guild.id}_${oldState.channelId}`)) {
         //fetch the channel
-        var vc = oldState.guild.channels.cache.get(jointocreatemap.get(`tempvoicechannel_${oldState.guild.id}_${oldState.channelID}`));
+        var vc = oldState.guild.channels.cache.get(jointocreatemap.get(`tempvoicechannel_${oldState.guild.id}_${oldState.channelId}`));
         //if the size is under 1
         if (vc.members.size < 1) { 
           //delete it from the map
-          jointocreatemap.delete(`tempvoicechannel_${oldState.guild.id}_${oldState.channelID}`); 
+          jointocreatemap.delete(`tempvoicechannel_${oldState.guild.id}_${oldState.channelId}`); 
          //log it 
           console.log(" :: " + oldState.member.user.username + "#" + oldState.member.user.discriminator + " ::  Channel vide -> Destruction")
         //delete the room
