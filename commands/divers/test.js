@@ -46,7 +46,7 @@ async chatInputRun(interaction)
         console.log(nb);
     	if(!isNaN(nb))
             {
-                nb = nb >= 100 ? 100 : nb+1;
+                nb = nb >= 100 ? 100 : nb;
                 const currentTimestamp = Date.now();
      await channel.messages.fetch({limit : nb}).then(messages => {
     	try
