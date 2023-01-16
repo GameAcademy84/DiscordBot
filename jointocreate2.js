@@ -117,26 +117,7 @@ module.exports = function (client) {
         user.setChannel(vc);
         //set the new channel to the map
         jointocreatemap2.set(`tempvoicechannel_${vc.guild.id}_${vc.id}`, vc.id);
-        //change the permissions of the channel
-        await vc.overwritePermissions([
-          {
-            id: user.id, //créateur du channel
-            allow: ['MANAGE_CHANNELS'],
-          },
-          {
-            id: "840201257456762880", //étudiants,
-            allow: 'VIEW_CHANNEL',
-          },
-    	  {
-            id: "524978158043398154", //STAFF
-            allow: 'VIEW_CHANNEL',
-          },
-          {
-            id: "524954689301643284", //@everyone
-           	deny: ['VIEW_CHANNEL'],
-          },
-        ]);
-      })
+      });
     }
 }
 
