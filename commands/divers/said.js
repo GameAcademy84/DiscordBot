@@ -44,7 +44,7 @@ module.exports = class SaidCommand extends Command {
 			)
 			.addStringOption(option => 
 				option
-				.setName('image url')
+				.setName('image_url')
 				.setDescription('image url')
 				.setRequired(true)
 			)
@@ -68,7 +68,7 @@ async chatInputRun(interaction)
 			{ name: 'Inline field title', value: 'Some value here', inline: true },
 		)
 		.addFields({ name: 'Inline field title', value: 'Some value here', inline: true })*/
-		image:{url:interaction.options.getString('image url'),},
+		image:{url:interaction.options.getString('image_url'),},
 		timestamp: new Date().toISOString()
         };
 		//.setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
