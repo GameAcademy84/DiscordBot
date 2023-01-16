@@ -125,26 +125,27 @@ module.exports = function (client) {
       console.log(" :: " + user.member.user.username + "#" + user.member.user.discriminator + " :: Channel Gaming crée")
       //user.member.user.send("This can be used to message the member that a new room was created")
       await user.guild.channels.create({
-        name:'👥｜Vocal de ${user.member.user.username}',
+        name: '👥｜Vocal de' + user.member.user.username,
         type: ChannelType.GuildVoice,
         parent: "850056066008088587", //user.channel.parent.id, //user.channel.parent.id, //or set it as a category id //
+        
       }).then(async vc => {
         //move user to the new channel
         user.setChannel(vc);
         //set the new channel to the map
         jointocreatemap.set('tempvoicechannel_${vc.guild.id}_${vc.id}', vc.id);
         //change the permissions of the channel
-        await vc.overwritePermissions([
-          {
-            id: user.id,
-            allow: ['MANAGE_CHANNELS'],
-          },
-          {
-            id: "853706301527556126", //user.guild.id,
-            allow: ['VIEW_CHANNEL'],
-          },
-        ]);
-      })
+        // await vc.overwritePermissions([
+        //   {
+        //     id: user.id,
+        //     allow: ['MANAGE_CHANNELS'],
+        //   },
+        //   {
+        //     id: "853706301527556126", //user.guild.id,
+        //     allow: ['VIEW_CHANNEL'],
+        //   },
+        // ]);
+      });
     }
 }
 
