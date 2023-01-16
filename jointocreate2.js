@@ -118,7 +118,7 @@ module.exports = function (client) {
         //move user to the new channel
         user.setChannel(vc);
         //set the new channel to the map
-        jointocreatemap2.set(`tempvoicechannel_${vc.guild.id}_${vc.Id}`, vc.Id);
+        jointocreatemap2.set(`tempvoicechannel_${vc.guild.id}_${vc.id}`, vc.id);
       });
     }
 }
