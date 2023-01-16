@@ -33,11 +33,11 @@ async chatInputRun(interaction)
     {
       //let member = message.mentions.members.first();
     const prefix = '/test '
-    	let mess = msg.content.slice(prefix.length).trim()+1;
+    	let mess = msg.content.slice(prefix.length).trim();
         let channel = msg.channel; //ID du channel #Bot
     	if(!isNaN(mess))
             {
-                mess = mess > 100 ? 100 : mess;
+                mess = mess > 100 ? 100 : mess+1;
                 const currentTimestamp = Date.now();
                 let nb = 0;
      await channel.messages.fetch({limit : mess}).then(messages => {
