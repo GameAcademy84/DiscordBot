@@ -32,7 +32,8 @@ async chatInputRun(interaction)
     if (isMessageInstance(msg)) 
     {
       //let member = message.mentions.members.first();
-    const prefix = '/test'
+        const prefix = '/test'
+        console.log(msg);
     	let mess = msg.content.replace(prefix, '').trim();
         let channel = msg.channel; //ID du channel #Bot
         console.log(mess);
