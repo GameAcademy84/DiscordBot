@@ -1,3 +1,4 @@
+const { ChannelType } = require("discord.js");
 const config = require("./config");
 const jointocreatemap2 = new Map();
 module.exports = function (client) {
@@ -109,8 +110,9 @@ module.exports = function (client) {
       //log it 
       console.log(" :: " + user.member.user.username + "#" + user.member.user.discriminator + " :: Channel Classe crée")
       //user.member.user.send("This can be used to message the member that a new room was created")
-      await user.guild.channels.create(`🏫｜Classe de ${user.member.user.username}`, {
-        type: 'voice',
+      await user.guild.channels.create({
+        name:`🏫｜Classe de ${user.member.user.username}`, 
+        type: ChannelType.GuildVoice,
         parent: "524976426244374560", //user.channel.parent.Id, 
       }).then(async vc => {
         //move user to the new channel
