@@ -34,7 +34,8 @@ module.exports = class HelloCommand extends Command {
 
 async chatInputRun(interaction)
 {
-		let member = interaction.options.getUser('user');
+		let user = interaction.options.getUser('user');
+		let member = interaction.guild.members.cache.get(user.id);
 		let myRole = interaction.guild.roles.cache.get("895023579484274748");
 		let bdeRole = interaction.guild.roles.cache.get("525221753581207573");
     
