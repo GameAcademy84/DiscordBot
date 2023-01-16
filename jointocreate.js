@@ -76,15 +76,14 @@ module.exports = function (client) {
   }
   // LEFT V12
   if (oldState.channelId && !newState.channelId) {
-            console.log('tempvoicechannel_'+oldState.guild.id + '_' + oldState.channelId);
             //get the jointocreatechannel id from the map
-          if (jointocreatemap.get('tempvoicechannel_${oldState.guild.id}_${oldState.channelId}')) {
+          if (jointocreatemap.get('tempvoicechannel_'+oldState.guild.id+'_' +oldState.channelId)) {
             //fetch it from the guild
-            var vc = oldState.guild.channels.cache.get(jointocreatemap.get('tempvoicechannel_${oldState.guild.id}_${oldState.channelId}'));
+            var vc = oldState.guild.channels.cache.get(jointocreatemap.get('tempvoicechannel_'+oldState.guild.id+'_' +oldState.channelId));
             //if the channel size is below one
             if (vc.members.size < 1) { 
               //delete it from the map
-              jointocreatemap.delete('tempvoicechannel_${oldState.guild.id}_${oldState.channelId}'); 
+              jointocreatemap.delete('tempvoicechannel_'+oldState.guild.id+'_' +oldState.channelId); 
               //log that it is deleted
               console.log(" :: " + oldState.member.user.username + "#" + oldState.member.user.discriminator + " :: Channel vide -> Destruction")
               //delete the voice channel
