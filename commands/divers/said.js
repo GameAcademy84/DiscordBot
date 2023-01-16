@@ -53,14 +53,13 @@ module.exports = class SaidCommand extends Command {
 
 async chatInputRun(interaction)
 {
-        const messageEmbed = 
-        {
-		color:0x009EE0,
-		title:interaction.options.getString('title'),
-		url:interaction.options.getString('url'),
-		author :{ name: 'GAME ACADEMY', iconURL: 'https://cdn.discordapp.com/attachments/873180067977629766/1062661853228048384/logo.png', url: 'https://www.gameacademy.fr' },
-		description:interaction.options.getString('description'),
-		thumbnail:'https://uploads-ssl.webflow.com/5fb51d39d7860f53100a7005/62039a4881efb147f51fa5b8_FullWhite_Game%20Academy_lateral-p-500.png',//GA BLANC
+		const messageEmbed = new EmbedBuilder()
+		.setColor(0x009EE0)
+		.setTitle(interaction.options.getString('title'))
+		.setURL(interaction.options.getString('url'))
+		.setAuthor({ name: 'GAME ACADEMY', iconURL: 'https://cdn.discordapp.com/attachments/873180067977629766/1062661853228048384/logo.png', url: 'https://www.gameacademy.fr' })
+		.setDescription(interaction.options.getString('description'))
+		.setThumbnail('https://uploads-ssl.webflow.com/5fb51d39d7860f53100a7005/62039a4881efb147f51fa5b8_FullWhite_Game%20Academy_lateral-p-500.png')//GA BLANC
 		/*.addFields(
 			{ name: 'Regular field title', value: 'Some value here' },
 			{ name: '\u200B', value: '\u200B' },
@@ -68,9 +67,8 @@ async chatInputRun(interaction)
 			{ name: 'Inline field title', value: 'Some value here', inline: true },
 		)
 		.addFields({ name: 'Inline field title', value: 'Some value here', inline: true })*/
-		image:{url:interaction.options.getString('image_url'),},
-		timestamp: new Date().toISOString()
-        };
+		.setImage({url:interaction.options.getString('image_url'),})
+		.setTimestamp(new Date().toISOString());
 		//.setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
 
 		await interaction.channel.send({ embeds: [{messageEmbed}] });  
