@@ -1,4 +1,4 @@
-const { Command } = require('@sapphire/framework');
+const { Command, InteractionHandlerStore } = require('@sapphire/framework');
 const { EmbedBuilder } = require('discord.js');
 
 
@@ -9,7 +9,7 @@ module.exports = class SaidCommand extends Command {
 			memberName: 'said',
 			group: 'divers',
 			aliases: ['annonce', 'message'],
-			description: 'GA said someting on discord server',
+			description: 'Send embed in current channel',
 	                guildOnly: true,
 	                throttling: {
 	                        usages: 2,
@@ -17,23 +17,49 @@ module.exports = class SaidCommand extends Command {
 	                },
 		});
 	}
-
-async run(message)
-{
-	if(message.author.id == 524954384808017943)
+	registerApplicationCommands(registry)
+    {
+        registry.registerChatInputCommand((builder)=>
         {
-		var prefix = "/said";
-		var messageSlice = message.content.slice(prefix.length).trim();
-        message.delete();
-		const Args = messageSlice.split("##");
-            
+            builder
+            .setName(this.name)
+            .setDescription(this.description)
+            .addStringOption(option => 
+                option
+                .setName('title')
+                .setDescription('title')
+                .setRequired(true)
+			)
+			.addStringOption(option => 
+				option
+				.setName('url')
+				.setDescription('url')
+				.setRequired(true)
+			)
+			.addStringOption(option => 
+				option
+				.setName('description')
+				.setDescription('description')
+				.setRequired(true)
+			)
+			.addStringOption(option => 
+				option
+				.setName('image url')
+				.setDescription('image url')
+				.setRequired(true)
+			)
+        })
+    }
+
+async chatInputRun(interaction)
+{
         const messageEmbed = 
         {
-		color:0x0099FF,
-		title:Args[0],
-		url:Args[1],
+		color:0x009EE0,
+		title:interaction.options.getString('title'),
+		url:interaction.options.getString('url'),
 		author :{ name: 'GAME ACADEMY', iconURL: 'https://cdn.discordapp.com/attachments/873180067977629766/1062661853228048384/logo.png', url: 'https://www.gameacademy.fr' },
-		description:Args[2],
+		description:interaction.options.getString('description'),
 		thumbnail:'https://uploads-ssl.webflow.com/5fb51d39d7860f53100a7005/62039a4881efb147f51fa5b8_FullWhite_Game%20Academy_lateral-p-500.png',//GA BLANC
 		/*.addFields(
 			{ name: 'Regular field title', value: 'Some value here' },
@@ -42,12 +68,12 @@ async run(message)
 			{ name: 'Inline field title', value: 'Some value here', inline: true },
 		)
 		.addFields({ name: 'Inline field title', value: 'Some value here', inline: true })*/
-		image:{url:Args[3]},
+		image:{url:interaction.options.getString('image url'),},
 		timestamp: new Date().toISOString()
         };
 		//.setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
 
-		await message.channel.send({ embed: messageEmbed });  
+		await interaction.channel.send({ embed: messageEmbed });  
         //await message.channel.send(Args[0] + Args[1] + Args[2] + Args[3]);  
             
             
@@ -57,10 +83,6 @@ async run(message)
        // const msg_attachment = message.attachment;  
 		//await message.channel.send(messageSlice).then(message2=>message2.edit();
         //await message.edit("edition");
-		
-        }
-    else
-  		await message.channel.send("tu n'es pas authorisé à faire ça.");
     
 }
 
