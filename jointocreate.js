@@ -76,7 +76,7 @@ module.exports = function (client) {
   }
   // LEFT V12
   if (oldState.channelId && !newState.channelId) {
-            console.log('tempvoicechannel_${oldState.guild.id}_${oldState.channelId}');
+            console.log('tempvoicechannel_'+oldState.guild.id + '_' + oldState.channelId);
             //get the jointocreatechannel id from the map
           if (jointocreatemap.get('tempvoicechannel_${oldState.guild.id}_${oldState.channelId}')) {
             //fetch it from the guild
@@ -103,13 +103,13 @@ module.exports = function (client) {
       //make a new channel
       jointocreatechannel(oldState);  
       //BUT if its also a channel ín the map (temp voice channel)
-      if (jointocreatemap.get('tempvoicechannel_${oldState.guild.id}_${oldState.channelId}')) {
+      if (jointocreatemap.get('tempvoicechannel_'+oldState.guild.id+'_' +oldState.channelId)) {
         //fetch the channel
-        var vc = oldState.guild.channels.cache.get(jointocreatemap.get('tempvoicechannel_${oldState.guild.id}_${oldState.channelId}'));
+        var vc = oldState.guild.channels.cache.get(jointocreatemap.get('tempvoicechannel_'+oldState.guild.id+'_' +oldState.channelId));
         //if the size is under 1
         if (vc.members.size < 1) { 
           //delete it from the map
-          jointocreatemap.delete('tempvoicechannel_${oldState.guild.id}_${oldState.channelId}'); 
+          jointocreatemap.delete('tempvoicechannel_'+oldState.guild.id+'_' +oldState.channelId); 
          //log it 
           console.log(" :: " + oldState.member.user.username + "#" + oldState.member.user.discriminator + " ::  Channel vide -> Destruction")
         //delete the room
@@ -134,7 +134,7 @@ module.exports = function (client) {
         //move user to the new channel
         user.setChannel(vc);
         //set the new channel to the map
-        jointocreatemap.set('tempvoicechannel_${vc.guild.id}_${vc.id}', vc.id);
+        jointocreatemap.set('tempvoicechannel_'+vc.guild.id+'_'+vc.id, vc.id);
         //change the permissions of the channel
         // await vc.overwritePermissions([
         //   {
