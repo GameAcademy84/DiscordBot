@@ -48,7 +48,7 @@ async chatInputRun(interaction)
             {
                 nb = nb >= 100 ? 100 : nb+1;
                 const currentTimestamp = Date.now();
-     await channel.messages.fetch({limit : mess}).then(messages => {
+     await channel.messages.fetch({limit : nb}).then(messages => {
     	try
         {
             var newMessages = [];
