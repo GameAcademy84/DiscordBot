@@ -32,28 +32,25 @@ module.exports = class HelloCommand extends Command {
         })
     }
 
-async chatInputRun(interaction)
-{
+	async chatInputRun(interaction)
+	{
 		let user = interaction.options.getUser('user');
 		let member = interaction.guild.members.cache.get(user.id);
 		let adherentRole = interaction.guild.roles.cache.get("895023579484274748");
-		let bdeRole = interaction.guild.roles.cache.get("525221753581207573");
-    
-    	if(member != null)
-        {
-				if (member.roles.cache.has(adherentRole.id)) {
-					await interaction.channel.send(member.displayName + " est déjà adhérent au BDE");
-				}
-				else{
-					await member.roles.add(adherentRole).catch(console.error);
-					await interaction.channel.send(member.displayName + " est désormais adhérent au BDE");
-				}
-		
-       }
-            }
-
-
 	
+		if(member != null)
+		{
+			if (member.roles.cache.has(adherentRole.id)) 
+			{
+				await interaction.channel.send(member.displayName + " est déjà adhérent au BDE");
+			}
+			else
+			{
+				await member.roles.add(adherentRole).catch(console.error);
+				await interaction.reply(member.displayName + " est désormais adhérent au BDE");
+			}
+		}
+	}
 };
 
       //await member.roles.add('895023579484274748');
