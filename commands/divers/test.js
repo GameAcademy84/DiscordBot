@@ -15,7 +15,14 @@ module.exports = class SaidCommand extends Command {
 	                        duration: 10,
 	                },
 		});
-	}
+    }
+    registerApplicationCommands(registry)
+    {
+        registry.registerChatInputCommand((builder)=>
+        {
+            builder.setName(this.name).setDescription(this.description);
+        })
+    }
 
     
 async run(message)
