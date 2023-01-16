@@ -76,11 +76,11 @@ module.exports = function (client) {
   }
   // LEFT V12
   if (oldState.channelId && !newState.channelId) {
-    console.log("Leaved channel");
             //get the jointocreatechannel id from the map
           if (jointocreatemap.get('tempvoicechannel_${oldState.guild.id}_${oldState.channelId}')) {
             //fetch it from the guild
             var vc = oldState.guild.channels.cache.get(jointocreatemap.get('tempvoicechannel_${oldState.guild.id}_${oldState.channelId}'));
+            console.log("Leaved channel");
             //if the channel size is below one
             if (vc.members.size < 1) { 
               //delete it from the map
