@@ -26,22 +26,16 @@ module.exports = class SaidCommand extends Command {
     }
 
     
-async chatInputRun(interaction)
+async messageRun(message, args)
 {
-    const msg = await interaction.reply({ content: 'test', ephemeral:true, fetchReply : true});
-    if (isMessageInstance(msg)) 
-    {
+    const nb = await args.pick('number');
       //let member = message.mentions.members.first();
-    const prefix = '/test '
-    	let mess = msg.content.slice(prefix.length).trim();
         let channel = msg.channel; //ID du channel #Bot
-    	if(!isNaN(mess))
+    	if(!isNaN(nb))
             {
-                mess = mess >= 100 ? 100 : mess+1;
-                console.log(mess);
+                nb = nb >= 100 ? 100 : nb+1;
                 const currentTimestamp = Date.now();
-                let nb = 0;
-     await channel.messages.fetch({limit : mess}).then(messages => {
+     await channel.messages.fetch({limit : nb}).then(messages => {
     	try
         {
             var newMessages = [];
@@ -61,7 +55,6 @@ async chatInputRun(interaction)
 		//member.send('ok');
     	
     	//client_Test.channels.cache.get('726865690736197693').send('test');
-        }
               }
               };
 
