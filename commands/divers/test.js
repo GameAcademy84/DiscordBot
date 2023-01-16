@@ -37,7 +37,8 @@ async chatInputRun(interaction)
         let channel = msg.channel; //ID du channel #Bot
     	if(!isNaN(mess))
             {
-                mess = mess > 100 ? 100 : mess+1;
+                mess = mess >= 100 ? 100 : mess+1;
+                console.log(mess);
                 const currentTimestamp = Date.now();
                 let nb = 0;
      await channel.messages.fetch({limit : mess}).then(messages => {
