@@ -1,4 +1,5 @@
 const { Command } = require('@sapphire/framework');
+const Discord = require("discord.js");
 
 module.exports = class ClearCommand extends Command {
 	constructor(client2) {
@@ -6,53 +7,68 @@ module.exports = class ClearCommand extends Command {
 			name: 'clear',
 			memberName: 'clear',
 			group: 'divers',
-			aliases: ['delete', 'cleaning'],
-			description: 'bot clean X messages',
+            aliases: ['clear', 'delete'],
+            
+			description: 'Bot clear X messages',
 	                guildOnly: true,
 	                throttling: {
 	                        usages: 2,
 	                        duration: 10,
 	                },
 		});
-	}
-
+    }
+    registerApplicationCommands(registry)
+    {
+        registry.registerChatInputCommand((builder)=>
+        {
+            builder
+            .setName(this.name)
+            .setDescription(this.description)
+            .addNumberOption(option => 
+                option
+                .setName('nb')
+                .setDescription('how many messages to delete')
+                .setRequired(true)
+                );
+        })
+    }
     
-async run(message)
+async chatInputRun(interaction)
 {
-      if(message.author.id == 524954384808017943){ //si l'utilisateur est Xylcan
-    		const prefix = '/clear '
-    		let mess = message.content.slice(prefix.length).trim()+1; //arg nombre de message à supprimer
-        	let channel = message.channel; //ID du channel utilisé
-    		if(!isNaN(mess)) //Si arg n'est pas un nombre
-          	  {
-             	   mess = mess > 100 ? 100 : mess; // limite mess à 100 MAX 
-              	   const currentTimestamp = Date.now(); //récupère la date du message
-           
-   			await channel.messages.fetch({limit : mess}).then(messages => {
-    		try
-       		 {
-           		 var newMessages = [];
-           		 newMessages=messages.filter(e=>e.createdTimestamp > currentTimestamp - 1123200000); //Filtre si le message < 13 jours
-            	 channel.send('Messages supprimés');
-           		 channel.bulkDelete(newMessages); //supprime les messages
-       		 }
-        	 catch (error)
+    let nb = interaction.options.getNumber('nb');
+        let channel = interaction.channel; //ID du channel #Bot
+        console.log(nb);
+    	if(!isNaN(nb))
+            {
+                nb = nb >= 100 ? 100 : nb;
+                const currentTimestamp = Date.now();
+     await channel.messages.fetch({limit : nb}).then(messages => {
+    	try
+        {
+            var newMessages = [];
+            newMessages=messages.filter(e=>e.createdTimestamp > currentTimestamp - 1123200000);
+            channel.send('Messages supprimés');
+            channel.bulkDelete(newMessages);
+        }
+         catch (error)
              {
                  console.log(error);
              }
      });
+
         //await message.delete();
             }
+            await interaction.reply(`deleted ${nb} messages`);
 	 
       
 		//member.send('ok');
     	
     	//client_Test.channels.cache.get('726865690736197693').send('test');
-    
               }
-              }};
+              };
 
       //await member.roles.add('895023579484274748');
+
 
 
 
