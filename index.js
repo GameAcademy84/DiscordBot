@@ -24,8 +24,8 @@ const jointocreate = require("./jointocreate"); //Lancement du bot Jointocreate
 	jointocreate(client2);
 const jointocreate2 = require("./jointocreate2"); //Lancement du bot Jointocreate2
 	jointocreate2(client2);
-//const welcome = require("./welcome"); //Lancement du bot Welcome
-//	welcome(client);
+const welcome = require("./welcome"); //Lancement du bot Welcome
+	welcome(client2);
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //----------------------------------------------------------------------VÉRIFIE lE LANCEMENT DES CLIENTS--------------------------------------------------------------------------------------------------//
