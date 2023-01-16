@@ -35,23 +35,23 @@ module.exports = class HelloCommand extends Command {
 async chatInputRun(interaction)
 {
 		let member = interaction.options.getUser('user');
-		let myRole = interaction.message.guild.roles.cache.get("895023579484274748");
-		let bdeRole = interaction.message.guild.roles.cache.get("525221753581207573");
+		let myRole = interaction.guild.roles.cache.get("895023579484274748");
+		let bdeRole = interaction.guild.roles.cache.get("525221753581207573");
     
     	if(member != null)
         {
-			if (message.member.roles.cache.has(bdeRole.id)){ 
+			if (member.roles.cache.has(bdeRole.id)){ 
 				if (member.roles.cache.has(myRole.id)) {
-					await message.channel.send(member.displayName + " est déjà adhérent au BDE");
+					await interaction.channel.send(member.displayName + " est déjà adhérent au BDE");
 				}
 				else{
 					await member.roles.add(myRole).catch(console.error);
-					await message.channel.send(member.displayName + " est désormais adhérent au BDE");
+					await interaction.channel.send(member.displayName + " est désormais adhérent au BDE");
 				}
 		
 		}
 		else	
-			await message.channel.send("Vous n'avez pas l'autorisation pour effectuer cette commande");
+			await interaction.channel.send("Vous n'avez pas l'autorisation pour effectuer cette commande");
        }
             }
 
