@@ -68,7 +68,7 @@ async chatInputRun(interaction)
 		)
 		.addFields({ name: 'Inline field title', value: 'Some value here', inline: true })*/
 		.setImage(interaction.options.getString('image_url'))
-		.setTimestamp(new Date().toISOString());
+		.setTimestamp();
 		//.setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
 
 		await interaction.channel.send({ embeds: [{messageEmbed}] });  
