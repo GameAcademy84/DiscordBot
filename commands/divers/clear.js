@@ -47,7 +47,6 @@ async chatInputRun(interaction)
         {
             var newMessages = [];
             newMessages=messages.filter(e=>e.createdTimestamp > currentTimestamp - 1123200000);
-            channel.send('Messages supprimés');
             channel.bulkDelete(newMessages);
         }
          catch (error)

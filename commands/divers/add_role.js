@@ -16,13 +16,27 @@ module.exports = class HelloCommand extends Command {
 	                },
 		});
 	}
+	registerApplicationCommands(registry)
+    {
+        registry.registerChatInputCommand((builder)=>
+        {
+            builder
+            .setName(this.name)
+            .setDescription(this.description)
+            .addUserOption(option => 
+                option
+                .setName('user')
+                .setDescription('user to add BDE role')
+                .setRequired(true)
+                );
+        })
+    }
 
-async run(message)
+async chatInputRun(interaction)
 {
-
-		let myRole = message.guild.roles.cache.get("895023579484274748");
-		let bdeRole = message.guild.roles.cache.get("525221753581207573");
-		let member = message.mentions.members.first();
+		let member = interaction.options.getUser('user');
+		let myRole = interaction.message.guild.roles.cache.get("895023579484274748");
+		let bdeRole = interaction.message.guild.roles.cache.get("525221753581207573");
     
     	if(member != null)
         {
