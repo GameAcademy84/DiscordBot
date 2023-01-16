@@ -42,11 +42,11 @@ module.exports = class HelloCommand extends Command {
 		{
 			if (member.roles.cache.has(adherentRole.id)) 
 			{
-				await interaction.channel.send(member.displayName + " est déjà adhérent au BDE");
+				interaction.channel.send(member.displayName + " est déjà adhérent au BDE");
 			}
 			else
 			{
-				await member.roles.add(adherentRole).catch(console.error);
+				member.roles.add(adherentRole).catch(console.error);
 				await interaction.reply(member.displayName + " est désormais adhérent au BDE");
 			}
 		}
