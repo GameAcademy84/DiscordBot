@@ -35,9 +35,9 @@ module.exports = class HelloCommand extends Command {
 	async chatInputRun(interaction)
 	{
 		let user = interaction.options.getUser('user');
-		let member = interaction.guild.members.cache.get(user.id);
-		let adherentRole = interaction.guild.roles.cache.get("895023579484274748");
-		interaction.channel.send(member.displayName + " devient adhérent et obtient le role " + adherentRole.name);
+		// let member = interaction.guild.members.cache.get(user.id);
+		// let adherentRole = interaction.guild.roles.cache.get("895023579484274748");
+		interaction.channel.send(" devient adhérent et obtient le role " );
 		// if(member != null)
 		// {
 		// 	if (member.roles.cache.has(adherentRole.id)) 
