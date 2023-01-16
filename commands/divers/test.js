@@ -27,7 +27,7 @@ module.exports = class SaidCommand extends Command {
     
 async chatInputRun(interaction)
 {
-    const message = await interaction.reply();
+    const message = await interaction.reply({ content: 'test', ephemeral:true, fetchReply : true});
     if (isMessageInstance(msg)) 
     {
       //let member = message.mentions.members.first();
