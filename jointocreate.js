@@ -76,6 +76,7 @@ module.exports = function (client) {
   }
   // LEFT V12
   if (oldState.channelId && !newState.channelId) {
+    console.log("Leaved channel");
             //get the jointocreatechannel id from the map
           if (jointocreatemap.get('tempvoicechannel_${oldState.guild.id}_${oldState.channelId}')) {
             //fetch it from the guild
@@ -125,7 +126,7 @@ module.exports = function (client) {
       console.log(" :: " + user.member.user.username + "#" + user.member.user.discriminator + " :: Channel Gaming crée")
       //user.member.user.send("This can be used to message the member that a new room was created")
       await user.guild.channels.create({
-        name: '👥｜Vocal de' + user.member.user.username,
+        name: '👥｜Vocal de ' + user.member.user.username,
         type: ChannelType.GuildVoice,
         parent: "850056066008088587", //user.channel.parent.id, //user.channel.parent.id, //or set it as a category id //
         
