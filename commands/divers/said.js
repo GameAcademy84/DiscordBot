@@ -67,11 +67,10 @@ async chatInputRun(interaction)
 			{ name: 'Inline field title', value: 'Some value here', inline: true },
 		)
 		.addFields({ name: 'Inline field title', value: 'Some value here', inline: true })*/
-		.setImage(interaction.options.getString('image_url'))
-		.setTimestamp();
+		.setImage(interaction.options.getString('image_url'));
 		//.setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
 
-		await interaction.channel.send({ embeds: [{messageEmbed}] });  
+		await interaction.channel.send({ embeds: [messageEmbed] });  
         //await message.channel.send(Args[0] + Args[1] + Args[2] + Args[3]);  
             
             
