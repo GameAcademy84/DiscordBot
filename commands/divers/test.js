@@ -1,4 +1,5 @@
 const { Command } = require('@sapphire/framework');
+const { isMessageInstance } = require('@sapphire/discord.js-utilities');
 const Discord = require("discord.js");
 
 module.exports = class SaidCommand extends Command {
