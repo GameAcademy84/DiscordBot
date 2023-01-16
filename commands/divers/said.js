@@ -67,7 +67,7 @@ async chatInputRun(interaction)
 			{ name: 'Inline field title', value: 'Some value here', inline: true },
 		)
 		.addFields({ name: 'Inline field title', value: 'Some value here', inline: true })*/
-		.setImage({url:interaction.options.getString('image_url'),})
+		.setImage(interaction.options.getString('image_url'))
 		.setTimestamp(new Date().toISOString());
 		//.setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
 
