@@ -25,12 +25,12 @@ module.exports = class SaidCommand extends Command {
     }
 
     
-async run(message)
+async chatInputRun(interaction)
 {
       //let member = message.mentions.members.first();
     const prefix = '/test '
-    	let mess = message.content.slice(prefix.length).trim()+1;
-        let channel = message.channel; //ID du channel #Bot
+    	let mess = interaction.message.content.slice(prefix.length).trim()+1;
+        let channel = interaction.message.channel; //ID du channel #Bot
     	if(!isNaN(mess))
             {
                 mess = mess > 100 ? 100 : mess;
