@@ -8,7 +8,8 @@ module.exports = class SaidCommand extends Command {
 			name: 'test',
 			memberName: 'test',
 			group: 'divers',
-			aliases: ['tests', 'testing'],
+            aliases: ['tests', 'testing'],
+            
 			description: 'GA  someting on discord server',
 	                guildOnly: true,
 	                throttling: {
@@ -21,27 +22,32 @@ module.exports = class SaidCommand extends Command {
     {
         registry.registerChatInputCommand((builder)=>
         {
-            builder.setName(this.name).setDescription(this.description);
+            builder
+            .setName(this.name)
+            .setDescription(this.description)
+            .addNumberOption(option => 
+                option
+                .setName('nb')
+                .setDescription('how many messages to delete')
+                .setRequired(true)
+                );
         })
     }
 
+    async execute(interaction)
+    {
+
+    }
     
 async chatInputRun(interaction)
 {
-    const msg = await interaction.reply({ content: 'test', ephemeral:true, fetchReply : true});
-    if (isMessageInstance(msg)) 
-    {
-      //let member = message.mentions.members.first();
-        const prefix = '/test'
-        console.log(msg);
-    	let mess = msg.content.replace(prefix, '').trim();
-        let channel = msg.channel; //ID du channel #Bot
-        console.log(mess);
-    	if(!isNaN(mess))
+    const nb = interaction.options.getNumber('nb');
+        let channel = interaction.channel; //ID du channel #Bot
+        console.log(nb);
+    	if(!isNaN(nb))
             {
-                mess = mess >= 100 ? 100 : mess+1;
+                nb = nb >= 100 ? 100 : nb+1;
                 const currentTimestamp = Date.now();
-                let nb = 0;
      await channel.messages.fetch({limit : mess}).then(messages => {
     	try
         {
@@ -55,14 +61,15 @@ async chatInputRun(interaction)
                  console.log(error);
              }
      });
+
         //await message.delete();
             }
+            await interaction.reply(`deleted ${nb} messages`);
 	 
       
 		//member.send('ok');
     	
     	//client_Test.channels.cache.get('726865690736197693').send('test');
-        }
               }
               };
 
