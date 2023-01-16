@@ -6,7 +6,7 @@ const {GatewayIntentBits } = require('discord.js');
 const path = require('path');
 
 const client = new SapphireClient({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMembers] });
-const client2 = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMembers] });
+const client2 = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMembers, GatewayIntentBits.GUILD_VOICE_STATES] });
 
 // client2.registry //Création du registre des commandes disponibles NE FONCTIONNE PAS AU 11/01/23
 //     .registerDefaultTypes()
