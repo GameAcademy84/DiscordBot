@@ -33,7 +33,7 @@ async chatInputRun(interaction)
     {
       //let member = message.mentions.members.first();
     const prefix = '/test'
-    	let mess = msg.content.slice(prefix.length).trim();
+    	let mess = msg.content.replace(prefix, '').trim();
         let channel = msg.channel; //ID du channel #Bot
         console.log(mess);
     	if(!isNaN(mess))
