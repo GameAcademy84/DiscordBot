@@ -39,7 +39,7 @@ module.exports = function (client) {
 			url_card = url_card.replace('.webp', '.png'); //remplace Webp to Png
 
         
-			member.send({ embed: messageEmbed });
+			member.send({ embeds: [messageEmbed] });
 			channel.send(url_card);
     		 });
     
