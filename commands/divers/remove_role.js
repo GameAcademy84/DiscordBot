@@ -8,7 +8,7 @@ module.exports = class ByeCommand extends Command {
 			memberName: 'remove_bde',
 			group: 'divers',
 			aliases: ['aurevoir', 'bye'],
-			description: 'Add member to Adhérent',
+			description: 'Remove adhérent role to member',
 			//userPermissions: ['ADMINISTRATOR'], // l'utilisateur doit être administrateur pour exécuter la commande
 	                guildOnly: true,
 	                throttling: {
@@ -17,30 +17,40 @@ module.exports = class ByeCommand extends Command {
 	                },
 		});
 	}
-
-async run(message)
-{
-	
-		let myRole = message.guild.roles.cache.get("895023579484274748");
-		let bdeRole = message.guild.roles.cache.get("525221753581207573");
-		let member = message.mentions.members.first();
-    
-    if(member != null)
+	registerApplicationCommands(registry)
+    {
+        registry.registerChatInputCommand((builder)=>
         {
-		if (message.member.roles.cache.has(bdeRole.id)){ 
-			if (!member.roles.cache.has(myRole.id)) {
-  				await message.channel.send(member.displayName + " n'est pas adhérent au BDE");
+            builder
+            .setName(this.name)
+            .setDescription(this.description)
+            .addUserOption(option => 
+                option
+                .setName('user')
+                .setDescription('user to remove Adhérent role')
+                .setRequired(true)
+                );
+        })
+	}
+	
+	async chatInputRun(interaction)
+	{
+		let user = interaction.options.getUser('user');
+		let member = interaction.guild.members.cache.get(user.id);
+		let adherentRole = interaction.guild.roles.cache.get("895023579484274748");
+		if(member != null)
+		{
+			if (!member.roles.cache.has(adherentRole.id)) 
+			{
+				interaction.channel.send(member.displayName + " n'est pas adhérent au BDE");
 			}
-			else{
-			await member.roles.remove(myRole).catch(console.error);
-			await message.channel.send(member.displayName + " n'est plus adhérent au BDE");
+			else
+			{
+				member.roles.remove(adherentRole).catch(console.error);
+				await interaction.reply(member.displayName + " n'est plus adhérent au BDE");
 			}
 		}
-		else
-			await message.channel.send("Vous n'avez pas l'autorisation pour effectuer cette commande");
-        }
-        
-}
+	}
 
 	
 };

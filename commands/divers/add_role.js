@@ -26,7 +26,7 @@ module.exports = class HelloCommand extends Command {
             .addUserOption(option => 
                 option
                 .setName('user')
-                .setDescription('user to add BDE role')
+                .setDescription('user to add Adhérent role')
                 .setRequired(true)
                 );
         })
