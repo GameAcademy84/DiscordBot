@@ -1,5 +1,6 @@
 const config = require("./config.json");
 
+
 const { SapphireClient } = require('@sapphire/framework');
 const { Client } = require('discord.js');
 const {GatewayIntentBits } = require('discord.js');
