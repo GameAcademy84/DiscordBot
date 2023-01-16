@@ -37,19 +37,19 @@ module.exports = class HelloCommand extends Command {
 		let user = interaction.options.getUser('user');
 		let member = interaction.guild.members.cache.get(user.id);
 		let adherentRole = interaction.guild.roles.cache.get("895023579484274748");
-	
-		if(member != null)
-		{
-			if (member.roles.cache.has(adherentRole.id)) 
-			{
-				interaction.channel.send(member.displayName + " est déjà adhérent au BDE");
-			}
-			else
-			{
-				member.roles.add(adherentRole).catch(console.error);
-				await interaction.reply(member.displayName + " est désormais adhérent au BDE");
-			}
-		}
+		await interaction.channel.send(member.displayName + " devient adhérent et obtient le role " + adherentRole.name);
+		// if(member != null)
+		// {
+		// 	if (member.roles.cache.has(adherentRole.id)) 
+		// 	{
+		// 		interaction.channel.send(member.displayName + " est déjà adhérent au BDE");
+		// 	}
+		// 	else
+		// 	{
+		// 		member.roles.add(adherentRole).catch(console.error);
+		// 		await interaction.reply(member.displayName + " est désormais adhérent au BDE");
+		// 	}
+		// }
 	}
 };
 
