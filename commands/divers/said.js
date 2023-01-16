@@ -73,7 +73,7 @@ async chatInputRun(interaction)
         };
 		//.setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
 
-		await interaction.channel.send({ embed: messageEmbed });  
+		await interaction.channel.send({ embeds: [{messageEmbed}] });  
         //await message.channel.send(Args[0] + Args[1] + Args[2] + Args[3]);  
             
             
