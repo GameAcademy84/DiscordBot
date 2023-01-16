@@ -41,7 +41,7 @@ module.exports = class SaidCommand extends Command {
     
 async chatInputRun(interaction)
 {
-    const nb = interaction.options.getNumber('nb');
+    let nb = interaction.options.getNumber('nb');
         let channel = interaction.channel; //ID du channel #Bot
         console.log(nb);
     	if(!isNaN(nb))
