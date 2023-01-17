@@ -33,7 +33,6 @@ module.exports = function (client) {
     console.log(` :: ⬜️ Module: ${description.name} | Loaded version ${description.version} from ("${description.filename}")`)
 //voice state update event to check joining/leaving channels
     client.on("voiceStateUpdate", (oldState, newState) => {
-        console.log("on voice state update");
   // SET CHANNEL NAME STRING
   //IGNORE BUT DONT DELETE!
         let oldparentname = "unknown";

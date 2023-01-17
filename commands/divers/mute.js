@@ -53,7 +53,7 @@ module.exports = class HelloCommand extends Command {
 			else
 			{
 				member.roles.add(muteRole).catch(console.error);
-				member.send("Vous avez été **mute** pour la raison suivant : " + interaction.options.getStrint('reason'));
+				member.send("Vous avez été **mute** pour la raison suivant : " + interaction.options.getString('reason'));
 				await interaction.reply(member.displayName + " est désormais **muet**");
 			}
 		}
