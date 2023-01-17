@@ -2,7 +2,7 @@ const { Command } = require('@sapphire/framework');
 const { MembershipScreeningFieldType } = require('discord.js');
 
 
-module.exports = class HelloCommand extends Command {
+module.exports = class MuteCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'mute',
