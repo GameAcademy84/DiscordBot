@@ -40,7 +40,7 @@ module.exports = function (client) {
 
         
 			member.send({ embeds: [messageEmbed] });
-			channel.send(url_card);
+			channel.send(encodeURI(url_card));
     		 });
     
  	client.on("guildMemberRemove", member =>{ //Vérifie l'arrivée d'un nouveau membre sur le serveur
@@ -51,7 +51,7 @@ module.exports = function (client) {
 			let url_card = 'https://api.popcat.xyz/welcomecard?background='+url_background+'&text1='+member.displayName+'&text2=A+quitté+le+serveur&text3='+timer+'&avatar='+avatar; //création de l'image
 			url_card = url_card.replace('.webp', '.png'); //remplace Webp to Png
         	let channel = client.channels.cache.get('726865690736197693'); //ID du channel #Bot
-        	channel.send(url_card);	
+        	channel.send(encodeURI(url_card));	
 	});
 };
     
