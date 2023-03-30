@@ -66,6 +66,10 @@ module.exports = function (client) {
           if (jointocreatemap2.get(`tempvoicechannel_${oldState.guild.id}_${oldState.channelId}`)) {
             //fetch it from the guild
             var vc = oldState.guild.channels.cache.get(jointocreatemap2.get(`tempvoicechannel_${oldState.guild.id}_${oldState.channelId}`));
+            if(vc == 'undefined')
+              console.log("Undefined channel")
+            else
+            {
             //if the channel size is below one
             if (vc.members.size < 1) { 
               //delete it from the map
@@ -75,9 +79,8 @@ module.exports = function (client) {
               //delete the voice channel
               return vc.delete(); 
           }
-            else {
-            }
           }
+        }
   }
   // Switch v12
   if (oldState.channelId && newState.channelId) {
@@ -91,6 +94,10 @@ module.exports = function (client) {
       if (jointocreatemap2.get(`tempvoicechannel_${oldState.guild.id}_${oldState.channelId}`)) {
         //fetch the channel
         var vc = oldState.guild.channels.cache.get(jointocreatemap2.get(`tempvoicechannel_${oldState.guild.id}_${oldState.channelId}`));
+        if(vc == 'undefined')
+              console.log("Undefined channel")
+            else
+            {
         //if the size is under 1
         if (vc.members.size < 1) { 
           //delete it from the map
@@ -103,6 +110,7 @@ module.exports = function (client) {
       else {
       }
       }
+    }
     }
 }
   })
