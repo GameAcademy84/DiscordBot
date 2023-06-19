@@ -53,6 +53,7 @@ module.exports = class SaidCommand extends Command {
 
 async chatInputRun(interaction)
 {
+		console.log("message said");
 		const messageEmbed = new EmbedBuilder()
 		.setColor(0x009EE0)
 		.setTitle(interaction.options.getString('title'))
