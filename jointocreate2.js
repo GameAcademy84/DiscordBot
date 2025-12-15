@@ -31,11 +31,11 @@ module.exports = function (client) {
 
   //log that the module is loaded
   console.log(` :: ⬜️ Module: ${description.name} | Loaded version ${description.version} from ("${description.filename}")`)
+  const tempVoiceOwners2 = new Map();
   //voice state update event to check joining/leaving channels
   client.on("voiceStateUpdate", (oldState, newState) => {
     // SET CHANNEL NAME STRING
     //IGNORE BUT DONT DELETE!
-    const tempVoiceOwners2 = new Map();
     let oldparentname = "unknown"
     let oldchannelname = "unknown"
     let oldchanelId = "unknown"
