@@ -70,8 +70,9 @@ module.exports = function (client) {
         if (vc == 'undefined')
           console.log("Undefined channel")
         else {
-          //if the channel size is below one
-          if (vc.members.size < 1) {
+          const ownerId = tempVoiceOwners2.get(oldState.channelId);
+          //if the size is under 1
+          if (vc.members.size < 1 || oldState.id === ownerId) {
             //delete it from the map
             jointocreatemap2.delete(`tempvoicechannel_${oldState.guild.id}_${oldState.channelId}`);
             //log that it is deleted
